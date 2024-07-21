@@ -1,14 +1,11 @@
 import { numeric, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
 import { categoriesTable } from "./category";
-import { usersTable } from "./user";
 
 export const expensesTable = pgTable("expenses_table", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   value: numeric("value", { scale: 2 }),
-  userId: serial("user_id")
-    .notNull()
-    .references(() => usersTable.id, { onDelete: "no action" }),
+  userId: serial("user_id").notNull(),
   categoryId: serial("category_id").references(() => categoriesTable.id, {
     onDelete: "no action",
   }),

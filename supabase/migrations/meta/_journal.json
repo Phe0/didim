@@ -8,6 +8,27 @@
       "when": 1721581768346,
       "tag": "0000_safe_mojo",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1721587607181,
+      "tag": "0001_worthless_raza",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1721587655744,
+      "tag": "0002_harsh_whistler",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1721589466681,
+      "tag": "0003_smart_rhodey",
+      "breakpoints": true
     }
   ]
 }
