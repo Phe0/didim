@@ -1,5 +1,5 @@
-import { Category } from "./Category";
-import { User } from "./User";
+import { Category } from "./category";
+import { User } from "./user";
 
 export class Expense {
   constructor(

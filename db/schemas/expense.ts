@@ -18,5 +18,5 @@ export const expensesTable = pgTable("expenses_table", {
     .$onUpdate(() => new Date()),
 });
 
-export type InsertUser = typeof expensesTable.$inferInsert;
-export type SelectUser = typeof expensesTable.$inferSelect;
+export type InsertExpense = typeof expensesTable.$inferInsert;
+export type SelectExpense = typeof expensesTable.$inferSelect;

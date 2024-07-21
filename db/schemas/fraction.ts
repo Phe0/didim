@@ -14,5 +14,5 @@ export const fractionsTable = pgTable("fractions_table", {
     .$onUpdate(() => new Date()),
 });
 
-export type InsertUser = typeof fractionsTable.$inferInsert;
-export type SelectUser = typeof fractionsTable.$inferSelect;
+export type InsertFraction = typeof fractionsTable.$inferInsert;
+export type SelectFraction = typeof fractionsTable.$inferSelect;
