@@ -1,2 +1,24 @@
 # Things to do next
 
+ - [ ] work on clerks tokens and sessions
+ - [ ] use react-hook-form
+ - [ ] use zod for validation
+ - [ ] on login, check if user has config
+   - [ ] if not, go to first config page
+   - [ ] if yes, go to main page
+ - [ ] on first config page
+   - [ ] get how user would like to be called
+   - [ ] get income, if user wants to say it
+   - [ ] ask if user wants to configure fractions for it's salary
+     - [ ] if yes, go to fractions page
+     - [ ] if not, go to initial page
+ - [ ] on fractions page
+   - [ ] list user's current fractions
+   - [ ] enable user to create fractions
+   - [ ] enable user to delete fractions
+   - [ ] enable user to edit fractions
+   - [ ] the sum of fractions percentages of a user must be less or equal to 100%
+ - [ ] on patrimony page
+   - [ ] user can add a patrimony
+   - [ ] user can edit a patrimony
+   - [ ] user delete a patrimony 
