@@ -3,10 +3,10 @@
  - [x] work on clerk signin and signup
  - [ ] use react-hook-form
  - [ ] use zod for validation
- - [ ] on login, check if user has config
-   - [ ] if not, go to first config page
-   - [ ] if yes, go to main page
- - [ ] on first config page
+ - [x] on login, check if user has config
+   - [x] if not, go to onboarding page
+   - [x] if yes, go to main page
+ - [ ] on onboarding page
    - [ ] get how user would like to be called
    - [ ] get income, if user wants to say it
    - [ ] ask if user wants to configure fractions for it's salary

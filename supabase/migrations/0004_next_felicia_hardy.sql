@@ -1,0 +1,1 @@
+ALTER TABLE "user_config_table" ADD COLUMN "first_time_user" boolean DEFAULT true NOT NULL;
