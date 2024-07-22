@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Auth } from "../components/auth";
+import { TopNav } from "@/components/top-nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +21,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ClerkProvider>
-          <Auth>
-            <main className="overflow-y-scroll">{children}</main>
-          </Auth>
+          <TopNav />
+          <main className="overflow-y-scroll">{children}</main>
         </ClerkProvider>
       </body>
     </html>

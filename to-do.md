@@ -1,6 +1,6 @@
 # Things to do next
 
- - [ ] work on clerks tokens and sessions
+ - [x] work on clerk signin and signup
  - [ ] use react-hook-form
  - [ ] use zod for validation
  - [ ] on login, check if user has config
