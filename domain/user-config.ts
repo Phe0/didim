@@ -11,7 +11,7 @@ export class UserConfig {
   income?: number;
   firstTimeUser?: boolean;
 
-  constructor({ id, income, firstTimeUser }: UserConfigType) {
+  constructor({ id, income, firstTimeUser = true }: UserConfigType) {
     this.id = id;
     this.income = income;
     this.firstTimeUser = firstTimeUser;
@@ -21,6 +21,7 @@ export class UserConfig {
     return {
       id: this.id,
       income: this.income?.toString(),
+      firstTimeUser: this.firstTimeUser,
     };
   }
 

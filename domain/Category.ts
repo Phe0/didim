@@ -1,3 +1,10 @@
+export interface CategoryType {
+  name: string;
+}
+
 export class Category {
-  constructor(public name: string) {}
+  name: string;
+  constructor({ name }: CategoryType) {
+    this.name = name;
+  }
 }
