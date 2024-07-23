@@ -3,7 +3,9 @@
  - [x] work on clerk signin and signup
  - [ ] use react-hook-form
  - [ ] use zod for validation
- - [ ] configure testing
+ - [x] configure testing
+ - [ ] use Error Boundaries
+ - [ ] use Suspense
  - [x] on login, check if user has config
    - [x] if not, go to onboarding page
    - [x] if yes, go to main page
