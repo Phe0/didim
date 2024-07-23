@@ -1,4 +1,5 @@
 import { InsertUserConfig, SelectUserConfig } from "@/db/schemas/user-config";
+import { Domain } from "./domain";
 
 export namespace UserConfig {
   export type Params = {
@@ -8,7 +9,7 @@ export namespace UserConfig {
   };
 }
 
-export class UserConfig {
+export class UserConfig implements Domain {
   id: string;
   income?: number;
   firstTimeUser?: boolean;
@@ -18,13 +19,16 @@ export class UserConfig {
     this.income = income;
     this.firstTimeUser = firstTimeUser;
   }
+  fromSelect<TSelect>(select: TSelect): Domain {
+    throw new Error("Method not implemented.");
+  }
 
-  toInsert(): InsertUserConfig {
+  toInsert<InsertUserConfig>() {
     return {
       id: this.id,
       income: this.income?.toString(),
       firstTimeUser: this.firstTimeUser,
-    };
+    } as InsertUserConfig;
   }
 
   static fromSelect(select: SelectUserConfig): UserConfig {

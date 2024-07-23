@@ -16,5 +16,6 @@ export const userConfigTable = pgTable("user_config_table", {
     .$onUpdate(() => new Date()),
 });
 
+export type UserConfigTable = typeof userConfigTable;
 export type InsertUserConfig = typeof userConfigTable.$inferInsert;
 export type SelectUserConfig = typeof userConfigTable.$inferSelect;

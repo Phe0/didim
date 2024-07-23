@@ -1,18 +1,31 @@
-import { eq } from "drizzle-orm";
+import { eq, InferModelFromColumns, InferSelectModel } from "drizzle-orm";
 import { db } from "@/db";
-import { InsertUserConfig, userConfigTable } from "@/db/schemas/user-config";
+import {
+  InsertUserConfig,
+  SelectUserConfig,
+  UserConfigTable,
+  userConfigTable,
+} from "@/db/schemas/user-config";
 import { UserConfig } from "@/domain/user-config";
+import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
+import { DbAPI } from "./DbAPI";
 
-export class UserConfigAPI {
-  private table = userConfigTable;
+export class UserConfigDbAPI implements DbAPI<InsertUserConfig> {
+  db: PostgresJsDatabase;
+  table: UserConfigTable;
+
+  constructor(db: PostgresJsDatabase, table: UserConfigTable) {
+    this.db = db;
+    this.table = table;
+  }
 
   async create(user: UserConfig) {
-    const result = await db
+    const result = await this.db
       .insert(this.table)
       .values(user.toInsert())
       .returning();
 
-    return UserConfig.fromSelect(result[0]);
+    return UserConfig.fromSelect(result[0] as SelectUserConfig);
   }
 
   async getById(id: string) {
@@ -21,19 +34,21 @@ export class UserConfigAPI {
       .from(this.table)
       .where(eq(this.table.id, id))
       .limit(1);
-    return select[0] ? UserConfig.fromSelect(select[0]) : null;
+    return select[0]
+      ? UserConfig.fromSelect(select[0] as SelectUserConfig)
+      : null;
   }
 
   async update(userConfig: InsertUserConfig) {
-    console.log("userConfig", userConfig);
     const result = await db
       .update(this.table)
       .set(userConfig)
       .where(eq(this.table.id, userConfig.id))
       .returning();
-    console.log("result", result);
-    return result[0] ? UserConfig.fromSelect(result[0]) : null;
+    return result[0]
+      ? UserConfig.fromSelect(result[0] as SelectUserConfig)
+      : null;
   }
 }
 
-export const userConfigAPI = new UserConfigAPI();
+export const userConfigAPI = new UserConfigDbAPI(db, userConfigTable);
