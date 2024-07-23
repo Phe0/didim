@@ -1,9 +1,11 @@
 import { InsertUserConfig, SelectUserConfig } from "@/db/schemas/user-config";
 
-interface UserConfigType {
-  id: string;
-  income?: number;
-  firstTimeUser?: boolean;
+export namespace UserConfig {
+  export type Params = {
+    id: string;
+    income?: number;
+    firstTimeUser?: boolean;
+  };
 }
 
 export class UserConfig {
@@ -11,7 +13,7 @@ export class UserConfig {
   income?: number;
   firstTimeUser?: boolean;
 
-  constructor({ id, income, firstTimeUser = true }: UserConfigType) {
+  constructor({ id, income, firstTimeUser = true }: UserConfig.Params) {
     this.id = id;
     this.income = income;
     this.firstTimeUser = firstTimeUser;

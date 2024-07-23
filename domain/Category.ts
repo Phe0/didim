@@ -1,10 +1,12 @@
-export interface CategoryType {
-  name: string;
+export namespace Category {
+  export type Params = {
+    name: string;
+  };
 }
 
 export class Category {
   name: string;
-  constructor({ name }: CategoryType) {
+  constructor({ name }: Category.Params) {
     this.name = name;
   }
 }

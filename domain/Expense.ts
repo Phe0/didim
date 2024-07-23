@@ -1,17 +1,19 @@
 import { Category } from "./category";
 
-export interface ExpenseType {
-  name: string;
-  value: number;
-  category?: Category;
+export namespace Expense {
+  export type Params = {
+    name: string;
+    value: number;
+    category?: Category;
+  };
 }
 
-export class Expense implements ExpenseType {
+export class Expense {
   name: string;
   value: number;
   category?: Category;
 
-  constructor({ name, value, category }: ExpenseType) {
+  constructor({ name, value, category }: Expense.Params) {
     this.name = name;
     this.value = value;
     this.category = category;

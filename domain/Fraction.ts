@@ -1,13 +1,15 @@
-export interface FractionType {
-  name: string;
-  percentage: number;
+export namespace Fraction {
+  export type Params = {
+    name: string;
+    percentage: number;
+  };
 }
 
-export class Fraction implements FractionType {
+export class Fraction {
   name: string;
   percentage: number;
 
-  constructor({ name, percentage }: FractionType) {
+  constructor({ name, percentage }: Fraction.Params) {
     this.name = name;
     this.percentage = percentage;
   }
