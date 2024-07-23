@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { Expense } from "../expense";
-import { Category } from "../category";
+import { Expense } from "../Expense";
+import { Category } from "../Category";
 
 describe("Expense", () => {
   it("should initiate an expense with a category", () => {
