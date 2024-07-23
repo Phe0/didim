@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { Category } from "../Category";
+import { Category } from "../category";
 
 describe("Category", () => {
   it("should initiate a category", () => {
