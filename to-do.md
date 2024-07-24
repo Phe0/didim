@@ -1,6 +1,5 @@
 # Things to do next
 
- - [x] work on clerk signin and signup
  - [ ] use react-hook-form
  - [ ] use zod for validation
  - [x] configure testing
