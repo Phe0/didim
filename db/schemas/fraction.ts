@@ -2,8 +2,8 @@ import { numeric, pgTable, serial, text, uuid } from "drizzle-orm/pg-core";
 import { profileTable } from "./profile";
 import { relations } from "drizzle-orm";
 
-export const fractionsTable = pgTable("fractions", {
-  id: serial("id").primaryKey(),
+export const fractionTable = pgTable("fractions", {
+  id: uuid("id").primaryKey().defaultRandom(),
   name: text("name").notNull(),
   percentage: numeric("percentage", { scale: 2 }),
   profileId: uuid("profile_id")
@@ -11,12 +11,12 @@ export const fractionsTable = pgTable("fractions", {
     .references(() => profileTable.id),
 });
 
-export const fractionsRelations = relations(fractionsTable, ({ one }) => ({
+export const fractionsRelations = relations(fractionTable, ({ one }) => ({
   profile: one(profileTable, {
-    fields: [fractionsTable.profileId],
+    fields: [fractionTable.profileId],
     references: [profileTable.id],
   }),
 }));
 
-export type FractionInsert = typeof fractionsTable.$inferInsert;
-export type FractionSelect = typeof fractionsTable.$inferSelect;
+export type FractionInsert = typeof fractionTable.$inferInsert;
+export type FractionSelect = typeof fractionTable.$inferSelect;

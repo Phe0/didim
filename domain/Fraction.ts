@@ -3,7 +3,7 @@ import { Domain } from "./domain";
 
 export namespace Fraction {
   export type Params = {
-    id: number;
+    id: string;
     name: string;
     percentage: number;
     profileId: string;
@@ -11,7 +11,7 @@ export namespace Fraction {
 }
 
 export class Fraction implements Domain {
-  id: number;
+  id: string;
   name: string;
   percentage: number;
   profileId: string;

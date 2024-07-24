@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS "fractions" (
-	"id" serial PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"name" text NOT NULL,
 	"percentage" numeric,
 	"profile_id" uuid NOT NULL
