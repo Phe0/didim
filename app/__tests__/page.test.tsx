@@ -1,15 +1,27 @@
-import { describe, expect, it } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import Home from "../page";
+import { ClerkProvider } from "@clerk/nextjs";
 
-describe("Page", () => {
-  it("should render correctly", () => {
-    render(<Home />);
+const mockAuth = jest.fn();
 
-    expect(screen.getByText("yayyy")).toBeDefined();
-  });
+jest.doMock("@clerk/nextjs/server", () => ({
+  auth: mockAuth,
+}));
 
-  it("should redirect to /onboarding ig user does not exist", () => {
-    render(<Home />);
+function renderHome() {
+  return render(
+    <ClerkProvider>
+      <Home />
+    </ClerkProvider>
+  );
+}
+
+describe("Home Page", () => {
+  it("should authorize user", async () => {
+    mockAuth.mockReturnValue({ userId: "123" });
+
+    renderHome();
+
+    expect(mockAuth).toHaveBeenCalled();
   });
 });

@@ -1,4 +1,3 @@
-import { describe, it, expect } from "vitest";
 import { Expense } from "../expense";
 import { Category } from "../category";
 

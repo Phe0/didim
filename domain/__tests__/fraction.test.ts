@@ -1,4 +1,3 @@
-import { describe, expect, it } from "vitest";
 import { Fraction } from "../fraction";
 
 describe("Fraction", () => {
