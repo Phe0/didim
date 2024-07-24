@@ -1,16 +1,16 @@
 {
-  "id": "b66c1132-cce3-4cd4-b371-bdb5fe22cf73",
+  "id": "baa80c9d-77a4-4658-8fb3-0482c5c81e86",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.users_table": {
-      "name": "users_table",
+    "public.user_table": {
+      "name": "user_table",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "text",
           "primaryKey": true,
           "notNull": true
         },
@@ -20,17 +20,18 @@
           "primaryKey": false,
           "notNull": true
         },
-        "email": {
-          "name": "email",
-          "type": "text",
+        "first_time_user": {
+          "name": "first_time_user",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "financial_details_id": {
+          "name": "financial_details_id",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
-        },
-        "income": {
-          "name": "income",
-          "type": "numeric",
-          "primaryKey": false,
-          "notNull": false
         },
         "created_at": {
           "name": "created_at",
@@ -47,17 +48,23 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "users_table_email_unique": {
-          "name": "users_table_email_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "email"
-          ]
+      "foreignKeys": {
+        "user_table_financial_details_id_financial_details_table_id_fk": {
+          "name": "user_table_financial_details_id_financial_details_table_id_fk",
+          "tableFrom": "user_table",
+          "tableTo": "financial_details_table",
+          "columnsFrom": [
+            "financial_details_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
-      }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
     },
     "public.expenses_table": {
       "name": "expenses_table",
@@ -109,19 +116,6 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "expenses_table_user_id_users_table_id_fk": {
-          "name": "expenses_table_user_id_users_table_id_fk",
-          "tableFrom": "expenses_table",
-          "tableTo": "users_table",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
         "expenses_table_category_id_categories_table_id_fk": {
           "name": "expenses_table_category_id_categories_table_id_fk",
           "tableFrom": "expenses_table",
@@ -182,21 +176,7 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {
-        "fractions_table_user_id_users_table_id_fk": {
-          "name": "fractions_table_user_id_users_table_id_fk",
-          "tableFrom": "fractions_table",
-          "tableTo": "users_table",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
+      "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
@@ -237,21 +217,42 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {
-        "categories_table_user_id_users_table_id_fk": {
-          "name": "categories_table_user_id_users_table_id_fk",
-          "tableFrom": "categories_table",
-          "tableTo": "users_table",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.financial_details_table": {
+      "name": "financial_details_table",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "income": {
+          "name": "income",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
         }
       },
+      "indexes": {},
+      "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     }
