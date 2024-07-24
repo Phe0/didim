@@ -1,15 +1,19 @@
-import { numeric, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+import { numeric, pgTable, serial, text, uuid } from "drizzle-orm/pg-core";
+import { profileTable } from "./profile";
+import { relations } from "drizzle-orm";
 
-export const fractionsTable = pgTable("fractions_table", {
+export const fractionsTable = pgTable("fractions", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   percentage: numeric("percentage", { scale: 2 }),
-  userId: serial("user_id").notNull(),
-  createdAt: timestamp("created_at").notNull().defaultNow(),
-  updatedAt: timestamp("updated_at")
+  profileId: uuid("profile_id")
     .notNull()
-    .$onUpdate(() => new Date()),
+    .references(() => profileTable.id),
 });
 
-export type InsertFraction = typeof fractionsTable.$inferInsert;
-export type SelectFraction = typeof fractionsTable.$inferSelect;
+export const fractionsRelations = relations(fractionsTable, ({ one }) => ({
+  profile: one(profileTable, {
+    fields: [fractionsTable.profileId],
+    references: [profileTable.id],
+  }),
+}));
