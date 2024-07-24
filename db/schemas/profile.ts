@@ -10,3 +10,6 @@ export const profileTable = pgTable("profile", {
   income: numeric("income", { scale: 2 }),
   firstTimeUser: boolean("first_time_user").notNull().default(false),
 });
+
+export type ProfileInsert = typeof profileTable.$inferInsert;
+export type ProfileSelect = typeof profileTable.$inferSelect;

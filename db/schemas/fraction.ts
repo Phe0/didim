@@ -17,3 +17,6 @@ export const fractionsRelations = relations(fractionsTable, ({ one }) => ({
     references: [profileTable.id],
   }),
 }));
+
+export type FractionInsert = typeof fractionsTable.$inferInsert;
+export type FractionSelect = typeof fractionsTable.$inferSelect;
