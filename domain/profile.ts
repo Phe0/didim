@@ -11,7 +11,7 @@ export namespace Profile {
   };
 }
 
-export class Profile implements Domain<ProfileInsert> {
+export class Profile implements Domain {
   id: string;
   name: string;
   email: string;
@@ -33,6 +33,6 @@ export class Profile implements Domain<ProfileInsert> {
       email: this.email,
       income: this.income.toString(),
       firstTimeUser: this.firstTimeUser,
-    };
+    } as ProfileInsert;
   }
 }

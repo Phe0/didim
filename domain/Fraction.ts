@@ -10,7 +10,7 @@ export namespace Fraction {
   };
 }
 
-export class Fraction implements Domain<FractionInsert> {
+export class Fraction implements Domain {
   id: number;
   name: string;
   percentage: number;
@@ -29,6 +29,6 @@ export class Fraction implements Domain<FractionInsert> {
       name: this.name,
       percentage: this.percentage.toString(),
       profileId: this.profileId,
-    };
+    } as FractionInsert;
   }
 }

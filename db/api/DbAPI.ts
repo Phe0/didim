@@ -6,7 +6,7 @@ export interface DbAPI<TInsert> {
   db: PostgresJsDatabase;
   table: PgTable;
 
-  create(value: Domain): Promise<Domain>;
-  update(value: TInsert): Promise<Domain | null>;
+  create(value: TInsert): Promise<Domain>;
+  update(id: string, value: Partial<TInsert>): Promise<Domain | null>;
   getById(id: string): Promise<Domain | null>;
 }

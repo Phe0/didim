@@ -1,3 +1,3 @@
-export interface Domain<TInsert> {
-  toInsert(): TInsert;
+export interface Domain {
+  toInsert(): unknown;
 }
