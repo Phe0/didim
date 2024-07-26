@@ -1,9 +1,9 @@
-import { FractionInsert } from "@/db/schemas/fraction";
+import { FractionInsert, FractionSelect } from "@/db/schemas/fraction";
 import { Entity } from "./entity";
 
 export namespace Fraction {
   export type Params = {
-    id: string;
+    id?: string;
     name: string;
     percentage: number;
     profileId: string;
@@ -11,7 +11,7 @@ export namespace Fraction {
 }
 
 export class Fraction implements Entity {
-  id: string;
+  id?: string;
   name: string;
   percentage: number;
   profileId: string;
@@ -30,5 +30,14 @@ export class Fraction implements Entity {
       percentage: this.percentage.toString(),
       profileId: this.profileId,
     } as FractionInsert;
+  }
+
+  static fromSelect(select: FractionSelect) {
+    return new Fraction({
+      id: select.id,
+      name: select.name,
+      percentage: parseFloat(select.percentage),
+      profileId: select.profileId,
+    });
   }
 }

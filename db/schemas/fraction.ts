@@ -5,7 +5,7 @@ import { relations } from "drizzle-orm";
 export const fractionTable = pgTable("fractions", {
   id: uuid("id").primaryKey().defaultRandom(),
   name: text("name").notNull(),
-  percentage: numeric("percentage", { scale: 2 }),
+  percentage: numeric("percentage", { scale: 2 }).notNull(),
   profileId: uuid("profile_id")
     .notNull()
     .references(() => profileTable.id),

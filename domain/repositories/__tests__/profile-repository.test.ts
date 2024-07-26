@@ -41,12 +41,6 @@ describe("Profile Repository", () => {
   });
 
   it("should update a profile successfully", async () => {
-    const updatedProfile = new Profile({
-      id: "1",
-      name: "John Doe",
-      email: "john@email.com",
-    });
-
     const profileSelect: ProfileSelect = {
       id: "1",
       name: "Jane Doe",
