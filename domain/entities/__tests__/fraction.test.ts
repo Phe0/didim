@@ -1,4 +1,4 @@
-import { Fraction } from "../fraction";
+import { Fraction } from "../../fraction";
 
 describe("Fraction", () => {
   it("should instantiate a fraction successfully", () => {

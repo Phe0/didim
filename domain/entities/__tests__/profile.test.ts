@@ -1,4 +1,4 @@
-import { Profile } from "../profile";
+import { Profile } from "../../profile";
 
 describe("Profile", () => {
   it("should instantiate a profile successfully", () => {

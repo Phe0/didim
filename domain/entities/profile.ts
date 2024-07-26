@@ -1,5 +1,5 @@
 import { ProfileInsert, profileTable } from "@/db/schemas/profile";
-import { Domain } from "./domain";
+import { Entity } from "./entity";
 
 export namespace Profile {
   export type Params = {
@@ -11,7 +11,7 @@ export namespace Profile {
   };
 }
 
-export class Profile implements Domain {
+export class Profile implements Entity {
   id: string;
   name: string;
   email: string;

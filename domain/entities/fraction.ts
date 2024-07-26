@@ -1,5 +1,5 @@
 import { FractionInsert } from "@/db/schemas/fraction";
-import { Domain } from "./domain";
+import { Entity } from "./entity";
 
 export namespace Fraction {
   export type Params = {
@@ -10,7 +10,7 @@ export namespace Fraction {
   };
 }
 
-export class Fraction implements Domain {
+export class Fraction implements Entity {
   id: string;
   name: string;
   percentage: number;
