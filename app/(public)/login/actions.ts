@@ -51,7 +51,6 @@ export async function login(prevState: LoginState, formData: FormData) {
   revalidatePath("/", "layout");
   redirect("/");
 }
-
 export async function signup(formData: FormData) {
   const supabase = createClient();
 
